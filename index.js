@@ -73,7 +73,43 @@ const two = [{
 }];
 const juju = [{
     type: "select",
-    name: "ju",
+    name: "Coach_julie",
+    message: " ",
+    choices: [{
+            title: "Yes",
+            description: "",
+            value: "yes",
+
+        },
+        {
+            title: "No",
+            description: "",
+            value: "no",
+        }
+    ],
+    initial: 0
+}];
+const eric = [{
+    type: "select",
+    name: "Eric_admin",
+    message: " Do you want to read it? ",
+    choices: [{
+            title: "Yes",
+            description: "",
+            value: "yes",
+
+        },
+        {
+            title: "No",
+            description: "",
+            value: "no",
+        }
+    ],
+    initial: 0
+}];
+const antony = [{
+    type: "select",
+    name: "Coach_anto",
     message: " ",
     choices: [{
             title: "Yes",
@@ -133,7 +169,7 @@ let play = async () => {
                     She asks you if you want to become her "Artisan" ?`)
                     let julie = async () => {
                         const respJuju = await prompts(juju);
-                        let thisChoiceJuju = respJuju.ju;
+                        let thisChoiceJuju = respJuju.Coach_julie;
                         if (thisChoiceJuju == "yes") {
                             console.log(`She's asking you to take him back to the « Terminal ».`)
                             score = score + 1;
@@ -147,7 +183,18 @@ let play = async () => {
                 } else {
                     console.log(`The elevator explodes and you find yourself in BeCode's cellar.
                                 You meet Eric who asks you to sign an attendance contract.`)
+                    let admin_eric = async () => {
+                        const respEric = await prompts(eric);
+                        let thisChoiceEric = respEric.Eric_admin;
+                        if (thisChoiceEric == "yes") {
+                            console.log(` GAME OVER`)
+                            score = score + 1;
+                        } else {
+                            console.log(`You run to the arcadee...`)
 
+                        }
+                    }
+                    admin_eric();
                 }
             }
             second();
