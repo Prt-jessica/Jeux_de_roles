@@ -36,7 +36,59 @@ const questions = [{
         initial: 0
     }
 ];
+const first = [{
+    type: "select",
+    name: "firstChoice",
+    message: " Where do you want to go : ",
+    choices: [{
+            title: "Stairs",
+            description: "Beautiful stairs but very long",
+            value: "Stairs"
+        },
+        {
+            title: "Elevator",
+            description: "Easy and relaxing",
+            value: "Elevator"
+        }
+    ],
+    initial: 0
+}];
+const two = [{
+    type: "select",
+    name: "twoChoice",
+    message: "Is CHIMMO the best site in the World: ",
+    choices: [{
+            title: "Yes",
+            description: "It's a your last word?",
+            value: "yes",
 
+        },
+        {
+            title: "No",
+            description: "Are you sure",
+            value: "no",
+        }
+    ],
+    initial: 0
+}];
+const juju = [{
+    type: "select",
+    name: "ju",
+    message: " ",
+    choices: [{
+            title: "Yes",
+            description: "",
+            value: "yes",
+
+        },
+        {
+            title: "No",
+            description: "",
+            value: "no",
+        }
+    ],
+    initial: 0
+}];
 /* */
 let play = async () => {
     const response = await prompts(questions);
@@ -61,23 +113,6 @@ let play = async () => {
 
 
 
-    const first = [{
-        type: "select",
-        name: "firstChoice",
-        message: " Where do you want to go : ",
-        choices: [{
-                title: "Stairs",
-                description: "Beautiful stairs but very long",
-                value: "Stairs"
-            },
-            {
-                title: "Elevator",
-                description: "Easy and relaxing",
-                value: "Elevator"
-            }
-        ],
-        initial: 0
-    }];
 
     let begin = async () => {
         const resp = await prompts(first);
@@ -87,30 +122,28 @@ let play = async () => {
             console.log(` 
             You take the elevator and come face to face with Nicolas. He generates an ACF field around you.
             To get out, you have to answer his question : "Is CHIMMO the best site in the world ?" `)
-            const two = [{
-                type: "select",
-                name: "twoChoice",
-                message: "Is CHIMMO the best site in the World: ",
-                choices: [{
-                        title: "Yes",
-                        description: "It's a your last word?",
-                        value: "yes",
 
-                    },
-                    {
-                        title: "No",
-                        description: "Are you sure",
-                        value: "no",
-                    }
-                ],
-                initial: 0
-            }];
             let second = async () => {
                 const respTwo = await prompts(two);
                 let thisChoiceTwo = respTwo.twoChoice;
                 if (thisChoiceTwo == "yes") {
                     console.log(`The elevator goes up and you can go to the BeCode class`)
                     score = score + 1;
+                    console.log(`There you meet Julie who introduces you to the witch Lara Vel. 
+                    She asks you if you want to become her "Artisan" ?`)
+                    let julie = async () => {
+                        const respJuju = await prompts(juju);
+                        let thisChoiceJuju = respJuju.ju;
+                        if (thisChoiceJuju == "yes") {
+                            console.log(`She's asking you to take him back to the « Terminal ».`)
+                            score = score + 1;
+                        } else {
+                            console.log(`She’s asking you to look for him with Ashraf, aka « Harry-Coder `)
+
+                        }
+                    }
+                    julie();
+
                 } else {
                     console.log(`The elevator explodes and you find yourself in BeCode's cellar.
                                 You meet Eric who asks you to sign an attendance contract.`)
@@ -123,24 +156,7 @@ let play = async () => {
         You go up the stairs, they take you directly to the BeCode room. 
         There you meet Julie who introduces you to the witch Lara Vel. 
         She asks you if you want to become her "Artisan" ?`)
-            const juju = [{
-                type: "select",
-                name: "ju",
-                message: " ",
-                choices: [{
-                        title: "Yes",
-                        description: "",
-                        value: "yes",
 
-                    },
-                    {
-                        title: "No",
-                        description: "",
-                        value: "no",
-                    }
-                ],
-                initial: 0
-            }];
             let julie = async () => {
                 const respJuju = await prompts(juju);
                 let thisChoiceJuju = respJuju.ju;
