@@ -74,7 +74,7 @@ const two = [{
 const juju = [{
     type: "select",
     name: "Coach_julie",
-    message: " ",
+    message: "You go up the stairs, they take you directly to the BeCode room. There you meet Julie who introduces you to the witch Lara Vel. She asks you if you want to become her Artisan ? ",
     choices: [{
             title: "Yes",
             description: "",
@@ -110,7 +110,7 @@ const eric = [{
 const antony = [{
     type: "select",
     name: "Coach_anto",
-    message: " ",
+    message: "You enter the arcade and the master of the game Anthony invites you to face him in a airhockey game in VR. ",
     choices: [{
             title: "Yes",
             description: "",
@@ -172,10 +172,23 @@ let play = async () => {
                         let thisChoiceJuju = respJuju.Coach_julie;
                         if (thisChoiceJuju == "yes") {
                             console.log(`She's asking you to take him back to the « Terminal ».`)
+
+                            console.log(`GAME OVER!`)
                             score = score + 1;
                         } else {
                             console.log(`She’s asking you to look for him with Ashraf, aka « Harry-Coder `)
+                            let antony_coach = async () => {
+                                const respAnto = await prompts(antony);
+                                let thisChoiceAntony = respAnto.Coach_anto;
+                                if (thisChoiceAntony == "yes") {
+                                    console.log(` You accept, but Jessica who was hidden in the room throws a real puck in the face. Game Over.`)
+                                    score = score + 1;
+                                } else {
+                                    console.log(`You refuse because you don't want to test a game before you see his code. Good choice !`)
 
+                                }
+                            }
+                            antony_coach();
                         }
                     }
                     julie();
@@ -191,6 +204,19 @@ let play = async () => {
                             score = score + 1;
                         } else {
                             console.log(`You run to the arcadee...`)
+                            let antony_coach = async () => {
+                                const respAnto = await prompts(antony);
+                                let thisChoiceAntony = respAnto.Coach_anto;
+                                if (thisChoiceAntony == "yes") {
+                                    console.log(` You accept, but Jessica who was hidden in the room throws a real puck in the face. Game Over.`)
+                                    score = score + 1;
+                                } else {
+                                    console.log(`You refuse because you don't want to test a game before you see his code. Good choice !`)
+
+                                }
+                            }
+                            antony_coach();
+
 
                         }
                     }
@@ -199,20 +225,30 @@ let play = async () => {
             }
             second();
         } else {
-            console.log(`
-        You go up the stairs, they take you directly to the BeCode room. 
-        There you meet Julie who introduces you to the witch Lara Vel. 
-        She asks you if you want to become her "Artisan" ?`)
+
 
             let julie = async () => {
                 const respJuju = await prompts(juju);
-                let thisChoiceJuju = respJuju.ju;
+                let thisChoiceJuju = respJuju.Coach_julie;
                 if (thisChoiceJuju == "yes") {
                     console.log(`She's asking you to take him back to the « Terminal ».`)
+                    console.log(`GAME OVER!`)
                     score = score + 1;
+
                 } else {
                     console.log(`She’s asking you to look for him with Ashraf, aka « Harry-Coder `)
+                    let antony_coach = async () => {
+                        const respAnto = await prompts(antony);
+                        let thisChoiceAntony = respAnto.Coach_anto;
+                        if (thisChoiceAntony == "yes") {
+                            console.log(` You accept, but Jessica who was hidden in the room throws a real puck in the face. Game Over.`)
+                            score = score + 1;
+                        } else {
+                            console.log(`You refuse because you don't want to test a game before you see his code. Good choice !`)
 
+                        }
+                    }
+                    antony_coach();
                 }
             }
             julie();
