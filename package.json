@@ -1,0 +1,22 @@
+{
+  "name": "jeux_de_roles",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Prt-jessica/Jeux_de_roles.git"
+  },
+  "author": "Jess",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Prt-jessica/Jeux_de_roles/issues"
+  },
+  "homepage": "https://github.com/Prt-jessica/Jeux_de_roles#readme",
+  "bin": {
+    "game": "./index.js"
+  }
+}
